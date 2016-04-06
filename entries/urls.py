@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from django.contrib import admin
-from pityu.urls import url_patterns
+from web.urls import url_patterns
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
