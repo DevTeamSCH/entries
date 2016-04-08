@@ -14,7 +14,7 @@ TODO
 
 ## Telepítés
 
-````pip install django==1.9.5```
+````pip install django==1.9.5````
 
 ````pip install pillow````
 
