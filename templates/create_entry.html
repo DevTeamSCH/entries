@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="" method="post">
-{% csrf_token %}
+<div class="uk-panel uk-panel-box">
+    <form class="uk-form" action="" method="post">
+    {% csrf_token %}
+    {% for paragraph in form %}
+    <div class="uk-form-row uk-form-stacked">
+        <label class="uk-form-label" for="">{{ paragraph.label }}</label>
+        <div class="uk-form-controls">{{ paragraph }}</div>
+    </div>
+    {% endfor %}
+    <input class="uk-button uk-button-primary uk-margin-top uk-align-right" type="submit">
 
-{{ form.as_p }}
-
-<input type="submit">
-
-</form>
+    </form>
+</div>
 {% endblock %}

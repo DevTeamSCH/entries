@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-    <form action="{% url 'login' %}?next={{ next }}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="hidden" value="{{ next }}">
-        <input type="submit">
-    </form>
-</body>
-</html>
+{% extends 'base.html'%}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content%}
+<div class="uk-panel uk-panel-box">
+<form class="uk-form" action="{% url 'login' %}?next={{ next }}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" value="{{ next }}">
+    <button class="uk-button uk-button-primary" type="submit">Login</button>
+</form>
+<div>
+{% endblock %}
