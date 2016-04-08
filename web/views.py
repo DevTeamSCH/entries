@@ -5,7 +5,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Entry
 
 
-
 def home(request):
     entries = Entry.objects.all()
 

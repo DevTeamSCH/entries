@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pityu'
+    'web'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -56,8 +56,7 @@ ROOT_URLCONF = 'entries.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,5 +105,10 @@ LOGIN_URL = '/login/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'bower_components'),
+    os.path.join(BASE_DIR, 'static')
+]
 
 STATIC_URL = '/static/'

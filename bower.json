@@ -1,0 +1,17 @@
+{
+  "name": "entries",
+  "authors": [
+    "DevTeam"
+  ],
+  "description": "",
+  "main": "",
+  "license": "None",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
