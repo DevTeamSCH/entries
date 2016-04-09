@@ -7,9 +7,18 @@ Free Entries
 {% block content %}
     {% for entry in entries %}
     <div class="uk-panel uk-panel-box uk-margin-bottom">
-        <h3 class="uk-panel-title">{{ entry.title }}</h3>
-        <p>{{ entry.description }}</p>
-        <a href="{{ entry.url }}">Click!!</a>
+        {% if entry.logo %}
+        <img class="uk-thumbnail uk-thumbnail-small uk-align-left"
+              src="{{ entry.logo.url }}"
+              alt=""
+         >
+        {% else %}
+        <h3 class="uk-panel-title uk-align-left">{{ entry.title }}</h3>
+        {% endif %}
+        <div>
+            <p>{{ entry.description }}</p>
+            <a href="{{ entry.url }}">Click!!</a>
+        </div>
     </div>
     {% empty %}
         No entries.
