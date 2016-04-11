@@ -7,7 +7,9 @@ class Entry(models.Model):
     description = models.TextField(blank=True)
     url = models.URLField(blank=True)
     logo = models.ImageField(blank=True)
+    approved = models.BooleanField(default=False)
     added_by = models.ForeignKey(User)
+
 
     def __str__(self):
         return self.title
