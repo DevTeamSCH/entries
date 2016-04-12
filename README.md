@@ -1,7 +1,7 @@
 # Entries
 ## Projektről
 
-TODO
+BME-s és SCH-s email címmel ingyenesen elérhető prémium szolgáltatásokat nyílvántartó program. 
 
 ## Függöségek
 - python3
