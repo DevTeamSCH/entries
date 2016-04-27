@@ -6,6 +6,7 @@ TODO
 ## Függöségek
 - python3
 - django == 1.9.5
+- django-rosetta
 - pillow
 - bower
 - jquery
