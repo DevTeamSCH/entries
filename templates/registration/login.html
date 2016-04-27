@@ -1,6 +1,5 @@
 {% extends 'base.html'%}
 
-
 {% block title %}
 Login
 {% endblock %}
@@ -8,10 +7,10 @@ Login
 {% block content%}
 <div class="uk-panel uk-panel-box">
 <form class="uk-form" action="{% url 'login' %}?next={{ next }}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" value="{{ next }}">
-    <button class="uk-button uk-button-primary" type="submit">Login</button>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="hidden" value="{{ next }}">
+  <button class="uk-button uk-button-primary" type="submit">Login</button>
 </form>
 <div>
 {% endblock %}
