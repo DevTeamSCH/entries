@@ -12,7 +12,7 @@ def home(request):
         'valami': 'Szaki',
         'entries': entries
     }
-    return render(request, 'index.html', context)
+    return render(request, 'entries.html', context)
 
 
 class EntryCreateView(LoginRequiredMixin, CreateView):
