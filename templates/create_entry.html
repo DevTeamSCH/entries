@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="uk-panel uk-panel-box">
-    <form class="uk-form" action="" method="post">
+    <form class="uk-form" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% for paragraph in form %}
     <div class="uk-form-row uk-form-stacked">
