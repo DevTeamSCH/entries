@@ -9,8 +9,7 @@ def home(request):
     entries = Entry.objects.all()
 
     context = {
-        'valami': 'Szaki',
-        'entries': entries
+        'entries': entries,
     }
     return render(request, 'entries.html', context)
 

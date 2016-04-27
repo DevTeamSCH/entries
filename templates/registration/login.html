@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block title %}
-Login
+{% trans "Login" %}
 {% endblock %}
 
 {% block content%}
@@ -11,7 +11,7 @@ Login
   {% csrf_token %}
   {{ form.as_p }}
   <input type="hidden" value="{{ next }}">
-  <button class="uk-button uk-button-primary" type="submit">{% trans "Login" %}</button>
+  <button class="uk-button uk-button-primary" type="submit"><i class="uk-icon-sign-in"></i> {% trans "Login" %}</button>
 </form>
 <div>
 {% endblock %}

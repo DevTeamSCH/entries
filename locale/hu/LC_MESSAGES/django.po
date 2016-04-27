@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 19:50+0000\n"
-"PO-Revision-Date: 2016-04-27 19:52+0000\n"
+"POT-Creation-Date: 2016-04-27 22:51+0000\n"
+"PO-Revision-Date: 2016-04-27 22:53+0000\n"
 "Last-Translator: b'  <p@p.hu>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,11 @@ msgstr "Magyar"
 #: entries/settings.py:115
 msgid "English"
 msgstr ""
+
+#: templates/base.html:11
+#| msgid "No entries."
+msgid "Awsome entries"
+msgstr "Nincsenek Bejegyzések"
 
 #: templates/base.html:20 templates/base.html.py:39 templates/entries.html:5
 msgid "Free Entries"
@@ -44,7 +49,7 @@ msgid "Logout"
 msgstr "Kijelentkezés"
 
 #: templates/base.html:28 templates/base.html.py:47
-#: templates/registration/login.html:14
+#: templates/registration/login.html:5 templates/registration/login.html:14
 msgid "Login"
 msgstr "Bejelentkezés"
 
@@ -56,6 +61,22 @@ msgstr "Menü"
 msgid "Hello"
 msgstr "Üdv"
 
+#: templates/create_entry.html:14
+msgid "Submit"
+msgstr "Véglegesít"
+
 #: templates/entries.html:28
 msgid "No entries."
 msgstr "Nincsenek Bejegyzések"
+
+#: web/models.py:7
+msgid "Title"
+msgstr "Cím"
+
+#: web/models.py:8
+msgid "Description"
+msgstr "Leírás"
+
+#: web/models.py:11
+msgid "Approved"
+msgstr "Elfogadva"
