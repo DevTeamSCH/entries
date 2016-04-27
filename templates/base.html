@@ -1,6 +1,7 @@
+{% load i18n %}
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="user-scalable=no, width=device-width">
@@ -16,34 +17,34 @@
   <div class="uk-width-small-5-6 uk-width-medium-1-2 uk-width-large-1-2 uk-container-center">
 
     <nav class="uk-navbar uk-margin-top uk-margin-bottom">
-      <a href="{% url 'home' %}" class="uk-navbar-brand uk-hidden-small">Free Entries</a>
+      <a href="{% url 'home' %}" class="uk-navbar-brand uk-hidden-small">{% trans "Free Entries" %}</a>
       <ul class="uk-navbar-nav uk-hidden-small">
-        <li><a href="{% url 'home' %}"><i class="uk-icon-home"></i> Home</a></li>
+        <li><a href="{% url 'home' %}"><i class="uk-icon-home"></i> {% trans "Home" %}</a></li>
 
         {% if user.is_authenticated %}
-        <li><a href="{% url 'create_entry' %}"><i class="uk-icon-file-text"></i> New entry</a></li>
-        <li><a href="{% url 'logout' %}"><i class="uk-icon-sign-out"></i> Logout</a></li>
+        <li><a href="{% url 'create_entry' %}"><i class="uk-icon-file-text"></i> {% trans "New entry" %}</a></li>
+        <li><a href="{% url 'logout' %}"><i class="uk-icon-sign-out"></i> {% trans "Logout" %}</a></li>
         {% else %}
-        <li><a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i> Login</a></li>
+        <li><a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i> {% trans "Login" %}</a></li>
         {% endif %}
       </ul>
 
       <ul class="uk-navbar-nav uk-hidden-medium uk-hidden-large">
-        <li><a href="#main-offcanvas" data-uk-offcanvas><i class="uk-icon-bars"></i> Menu</a></li>
+        <li><a href="#main-offcanvas" data-uk-offcanvas><i class="uk-icon-bars"></i> {% trans "Menu" %}</a></li>
       </ul>
     </nav>
 
     <div id="main-offcanvas" class="uk-offcanvas">
       <div class="uk-offcanvas-bar uk-contrast">
-        <h3 class="uk-text-center uk-margin-top uk-margin-bottom-remove">Free Entries</h3>
+        <h3 class="uk-text-center uk-margin-top uk-margin-bottom-remove">{% trans "Free Entries" %}</h3>
         <ul class="uk-nav uk-nav-offcanvas uk-margin-top" data-uk-nav>
-          <li><a href="{% url 'home' %}"><i class="uk-icon-home"></i>  Home</a></li>
+          <li><a href="{% url 'home' %}"><i class="uk-icon-home"></i> {% trans "Home" %}</a></li>
 
           {% if user.is_authenticated %}
-          <li><a href="{% url 'create_entry' %}"><i class="uk-icon-file-text"></i> New entry</a></li>
-          <li><a href="{% url 'logout' %}"><i class="uk-icon-sign-out"></i>  Logout</a></li>
+          <li><a href="{% url 'create_entry' %}"><i class="uk-icon-file-text"></i> {% trans "New entry" %}</a></li>
+          <li><a href="{% url 'logout' %}"><i class="uk-icon-sign-out"></i> {% trans "Logout" %}</a></li>
           {% else %}
-          <li><a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i> Login</a></li>
+          <li><a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i> {% trans "Login" %}</a></li>
           {% endif %}
         </ul>
       </div>
@@ -53,7 +54,7 @@
     {% if user.is_authenticated %}
     <div class="uk-alert uk-alert-success" data-uk-alert>
       <a href="" class="uk-alert-close uk-close"></a>
-      <p>Hello, {{ user }}!</p>
+      <p>{% trans "Hello" %}, {{ user }}!</p>
     </div>
     {% endif %}
 

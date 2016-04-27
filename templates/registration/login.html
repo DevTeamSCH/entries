@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% load i18n %}
 
 {% block title %}
 Login
@@ -10,7 +11,7 @@ Login
   {% csrf_token %}
   {{ form.as_p }}
   <input type="hidden" value="{{ next }}">
-  <button class="uk-button uk-button-primary" type="submit">Login</button>
+  <button class="uk-button uk-button-primary" type="submit">{% trans "Login" %}</button>
 </form>
 <div>
 {% endblock %}
