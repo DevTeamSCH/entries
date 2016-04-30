@@ -6,6 +6,12 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="uk-width-1-3 uk-align-center uk-button-group uk-margin-bottom" data-uk-button-radio>
+  <a href="{% url 'home' %}" class="uk-button">{% trans "All" %}</a>
+  <a href="{% url 'indorm' %}" class="uk-button">{% trans "In Dormitory" %}</a>
+</div>
+
 {% for entry in entries %}
 {% if entry.approved %}
 <div class="uk-panel uk-panel-box uk-margin-bottom">

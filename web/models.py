@@ -9,6 +9,7 @@ class Entry(models.Model):
     url = models.URLField(blank=True)
     logo = models.ImageField(blank=True)
     approved = models.BooleanField(_("Approved"), default=False)
+    in_dorm = models.BooleanField(_("Is in dormitory?"), default=False)
     added_by = models.ForeignKey(User)
 
     def __str__(self):
