@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 22:51+0000\n"
-"PO-Revision-Date: 2016-04-27 22:53+0000\n"
+"POT-Creation-Date: 2016-04-30 18:26+0000\n"
+"PO-Revision-Date: 2016-04-30 18:27+0000\n"
 "Last-Translator: b'  <p@p.hu>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,6 @@ msgid "English"
 msgstr ""
 
 #: templates/base.html:11
-#| msgid "No entries."
 msgid "Awsome entries"
 msgstr "Nincsenek Bejegyzések"
 
@@ -49,7 +48,7 @@ msgid "Logout"
 msgstr "Kijelentkezés"
 
 #: templates/base.html:28 templates/base.html.py:47
-#: templates/registration/login.html:5 templates/registration/login.html:14
+#: templates/registration/login.html:5 templates/registration/login.html:21
 msgid "Login"
 msgstr "Bejelentkezés"
 
@@ -65,7 +64,15 @@ msgstr "Üdv"
 msgid "Submit"
 msgstr "Véglegesít"
 
-#: templates/entries.html:28
+#: templates/entries.html:11
+msgid "All"
+msgstr "Összes"
+
+#: templates/entries.html:12
+msgid "In Dormitory"
+msgstr "Kollégiumi"
+
+#: templates/entries.html:34
 msgid "No entries."
 msgstr "Nincsenek Bejegyzések"
 
@@ -80,3 +87,7 @@ msgstr "Leírás"
 #: web/models.py:11
 msgid "Approved"
 msgstr "Elfogadva"
+
+#: web/models.py:12
+msgid "Is in dormitory?"
+msgstr "Kollégiumon belüli szolgáltatás?"
