@@ -1,3 +1,4 @@
+import markdown
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
@@ -14,3 +15,10 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def rendered_content(self):
+        return markdown.markdown(
+            self.description,
+            extensions=['markdown.extensions.tables']
+        )

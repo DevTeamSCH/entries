@@ -1,7 +1,18 @@
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+from django.contrib.auth.views import login
 from .models import Entry
+
+
+def custom_login(request, *args, **kwargs):
+    response = login(request, *args, **kwargs)
+
+    if request.user.is_authenticated():
+        messages.info(request, "Welcome ...")
+
+    return response
 
 
 class EntriesTemplateView(TemplateView):
@@ -11,6 +22,7 @@ class EntriesTemplateView(TemplateView):
         entries = Entry.objects.all()
         context = {
             'entries': entries,
+            'indorm': False,
         }
         return context
 
@@ -22,6 +34,7 @@ class InDormitoryTemplateView(TemplateView):
         entries = Entry.objects.filter(in_dorm=True)
         context = {
             'entries': entries,
+            'indorm': True,
         }
         return context
 

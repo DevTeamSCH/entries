@@ -1,16 +1,52 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load i18n %}
+
+{% block css%}
+    <link rel="stylesheet" href="{% static 'codemirror/lib/codemirror.css' %}">
+    <link rel="stylesheet" href="{% static 'uikit/css/components/htmleditor.css' %}">
+    
+{% endblock %}
+
+{% block script %}
+ <!-- Codemirror and marked dependencies -->
+    <script src="{% static 'codemirror/lib/codemirror.js' %}"></script>
+    <script src="{% static 'codemirror/mode/markdown/markdown.js' %}"></script>
+    <script src="{% static 'codemirror/addon/mode/overlay.js' %}"></script>
+    <script src="{% static 'codemirror/mode/xml/xml.js' %}"></script>
+    <script src="{% static 'codemirror/mode/gfm/gfm.js' %}"></script>
+
+    <!-- HTML editor CSS and JavaScript -->
+    <script src="{% static 'uikit/js/components/htmleditor.min.js' %}"></script>
+    
+{% endblock %}
 
 {% block content %}
 <div class="uk-panel uk-panel-box">
   <form class="uk-form" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {% for paragraph in form %}
     <div class="uk-form-row uk-form-stacked">
-      <label class="uk-form-label" for="">{{ paragraph.label }}</label>
-      <div class="uk-form-controls">{{ paragraph }}</div>
+      <label class="uk-form-label" for="">{{ form.title.label }}</label>
+      <div class="uk-form-controls">{{ form.title }}</div>
     </div>
-    {% endfor %}
+    <div class="uk-form-row uk-form-stacked">
+      <label class="uk-form-label" for="">{{ form.description.label }}</label>
+      <div class="uk-form-controls">
+        <textarea name="{{ form.description.html_name }}" data-uk-htmleditor="{markdown:true}"></textarea>
+      </div>
+    </div>
+    <div class="uk-form-row uk-form-stacked">
+      <label class="uk-form-label" for="">{{ form.url.label }}</label>
+      <div class="uk-form-controls">{{ form.url }}</div>
+    </div>
+    <div class="uk-form-row uk-form-stacked">
+      <label class="uk-form-label" for="">{{ form.in_dorm.label }}</label>
+      <div class="uk-form-controls">{{ form.in_dorm }}</div>
+    </div>
+     <div class="uk-form-row uk-form-stacked">
+      <label class="uk-form-label" for="">{{ form.logo.label }}</label>
+      <div class="uk-form-controls">{{ form.logo }}</div>
+    </div>
     <input class="uk-button uk-button-primary uk-margin-top uk-align-right" type="submit" value="{% trans "Submit" %}">
 
   </form>
