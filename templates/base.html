@@ -11,11 +11,11 @@
   <title>{% block title %}{% trans "Awsome entries" %}{% endblock %}</title>
   <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
   <script src="{% static 'marked/marked.min.js' %}"></script>
-  <link rel="stylesheet" type="text/css" href="{% static 'uikit/css/uikit.gradient.min.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'uikit/css/uikit.min.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 </head>
 <body>
-  
+
   <nav class="uk-navbar uk-margin-top uk-margin-bottom">
     <a href="{% url 'home' %}" class="uk-navbar-brand uk-hidden-small">{% trans "Free Entries" %}</a>
     <ul class="uk-navbar-nav uk-hidden-small">
@@ -53,18 +53,9 @@
 
   <div class="uk-width-small-5-6 uk-width-medium-1-2 uk-width-large-1-2 uk-container-center">
 
-
-
-    {% if user.is_authenticated %}
-    <div class="uk-alert uk-alert-success" data-uk-alert>
-      <a href="" class="uk-alert-close uk-close"></a>
-      <p>{% trans "Hello" %}, {{ user }}!</p>
-    </div>
-    {% endif %}
-
     {% block content %}
-
     {% endblock %}
+
     <hr>
     <div>
       <p><i class="uk-icon-copyright"></i> 2016 KSZK DevTeam</p>
@@ -74,7 +65,6 @@
 
   <script src="{% static 'uikit/js/uikit.min.js' %}"></script>
   {% block script %}
-
   {% endblock %}
 </body>
 </html>

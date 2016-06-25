@@ -19,9 +19,7 @@
 
 {% for entry in entries %}
   {% if entry.approved %}
-    {% block entry %}
     {% include "entry.html" with entry=entry  %}
-    {% endblock %}
   {% endif %}
   {% empty %}
   {% trans "No entries." %}
