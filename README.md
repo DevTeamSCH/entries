@@ -1,7 +1,8 @@
 # Entries
 ## Projektről
 
-TODO
+Ez egíy gyüjtő weblap a BME-s hallagtóként ingyenesen elérhető prémium szolgáltatásokról.
+A Github studentpack-hez hasnolóan.
 
 ## Függöségek
 - python3
@@ -15,13 +16,13 @@ TODO
 
 ## Telepítés
 
-````pip install django==1.9.5````
-
-````pip install pillow````
+````pip install -r requirements.txt````
 
 ````bower install````
 
-````sassc sass/base.sass sass/base.css````
+````sassc static/sass/base.sass static/css/base.css````
+
+````./manage.py compilemessages````
 
 ````./manage.py migrate````
 
