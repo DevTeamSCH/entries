@@ -5,8 +5,8 @@ Ez egy gyüjtő weblap a BME-s hallagtóként ingyenesen elérhető prémium szo
 A Github studentpack-hez hasnolóan.
 
 ## Függöségek
-- python3
-- django == 1.9.5
+- python3 >= 3.4
+- django >= 1.9, <1.10
 - django-rosetta
 - pillow
 - bower

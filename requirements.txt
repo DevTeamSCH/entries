@@ -6,9 +6,10 @@
 #
 
 django-rosetta==0.7.11
-Django==1.9.6             # via django-rosetta
-microsofttranslator==0.7  # via django-rosetta
-Pillow==3.0.0
+Django==1.9.7             # via django-rosetta
+Markdown==2.6.6
+microsofttranslator==0.8  # via django-rosetta
+Pillow==3.2.0
 polib==1.0.7              # via django-rosetta
-requests==2.9.1
+requests==2.10.0
 six==1.10.0               # via django-rosetta, microsofttranslator
