@@ -1,7 +1,7 @@
 # Entries
 ## Projektről
 
-Ez egíy gyüjtő weblap a BME-s hallagtóként ingyenesen elérhető prémium szolgáltatásokról.
+Ez egy gyüjtő weblap a BME-s hallagtóként ingyenesen elérhető prémium szolgáltatásokról.
 A Github studentpack-hez hasnolóan.
 
 ## Függöségek
