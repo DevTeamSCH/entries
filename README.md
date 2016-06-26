@@ -15,6 +15,7 @@ A Github studentpack-hez hasnolóan.
 - sass
 
 ## Telepítés
+Érdemes csinálni egy virtualenv-t a számára.
 
 ````pip install -r requirements.txt````
 
