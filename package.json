@@ -1,0 +1,21 @@
+{
+  "name": "entries",
+  "version": "1.0.0",
+  "description": "Ez egy gyüjtő weblap a BME-s hallagtóként ingyenesen elérhető prémium szolgáltatásokról. A Github studentpack-hez hasnolóan.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.sch.bme.hu/kszk/entries.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "simplemde": "^1.11.2",
+    "uikit": "3.0.0-beta.21"
+  }
+}

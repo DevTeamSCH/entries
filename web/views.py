@@ -1,41 +1,56 @@
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib import messages
-from django.contrib.auth.views import login
+from django.views.generic.base import ContextMixin
+from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage
+from django.core.paginator import PageNotAnInteger
 from .models import Entry
 
 
-def custom_login(request, *args, **kwargs):
-    response = login(request, *args, **kwargs)
-
-    if request.user.is_authenticated():
-        messages.info(request, "Welcome ...")
-
-    return response
-
-
-class EntriesTemplateView(TemplateView):
-    template_name = 'entries.html'
-
+class SearchMixin(ContextMixin):
     def get_context_data(self, **kwargs):
-        entries = Entry.objects.all()
-        context = {
-            'entries': entries,
-            'indorm': False,
-        }
+        context = super().get_context_data(**kwargs)
+        context['entries'] = Entry.objects.all()
         return context
 
 
-class InDormitoryTemplateView(TemplateView):
+class EntriesPaginationMixin(ContextMixin):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        paginator = Paginator(self.entries, 25)
+
+        page = self.request.GET.get('page')
+        try:
+            context['entries'] = paginator.page(page)
+        except PageNotAnInteger:
+            context['entries'] = paginator.page(1)
+        except EmptyPage:
+            context['entries'] = paginator.page(paginator.num_pages)
+
+        context['page_numbers'] = range(1, paginator.num_pages+1)
+        return context
+
+
+class EntriesTemplateView(EntriesPaginationMixin, TemplateView):
     template_name = 'entries.html'
 
     def get_context_data(self, **kwargs):
-        entries = Entry.objects.filter(in_dorm=True)
-        context = {
-            'entries': entries,
-            'indorm': True,
-        }
+        self.entries = Entry.objects.all()
+        context = super().get_context_data(**kwargs)
+        context['indorm'] = False
+
+        return context
+
+
+class InDormitoryTemplateView(EntriesPaginationMixin, TemplateView):
+    template_name = 'entries.html'
+
+    def get_context_data(self, **kwargs):
+        self.entries = Entry.objects.filter(in_dorm=True)
+        context = super().get_context_data(**kwargs)
+        context['indorm'] = True
         return context
 
 

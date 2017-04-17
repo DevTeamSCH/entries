@@ -8,62 +8,57 @@
   {% block css %}
 
   {% endblock %}
-  <title>{% block title %}{% trans "Awsome entries" %}{% endblock %}</title>
-  <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-  <script src="{% static 'marked/marked.min.js' %}"></script>
-  <link rel="stylesheet" type="text/css" href="{% static 'uikit/css/uikit.min.css' %}"/>
+  <title>{% block title %}{% trans "Awesome entries" %}{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'uikit/dist/css/uikit.min.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 </head>
 <body>
+  <nav class="uk-navbar-container uk-margin-bottom" uk-navbar>
+    <div class="uk-navbar-left">
+      <a href="{% url 'home' %}" class="uk-navbar-item uk-logo">{% trans "Entries" %}</a>
 
-  <nav class="uk-navbar uk-margin-top uk-margin-bottom">
-    <a href="{% url 'home' %}" class="uk-navbar-brand uk-hidden-small">{% trans "Free Entries" %}</a>
-    <ul class="uk-navbar-nav uk-hidden-small">
-      <li><a href="{% url 'home' %}"><i class="uk-icon-home"></i> {% trans "Home" %}</a></li>
-
-      {% if user.is_authenticated %}
-      <li><a href="{% url 'create_entry' %}"><i class="uk-icon-file-text"></i> {% trans "New entry" %}</a></li>
-      <li><a href="{% url 'logout' %}"><i class="uk-icon-sign-out"></i> {% trans "Logout" %}</a></li>
-      {% else %}
-      <li><a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i> {% trans "Login" %}</a></li>
-      {% endif %}
-    </ul>
-
-    <ul class="uk-navbar-nav uk-hidden-medium uk-hidden-large">
-      <li><a href="#main-offcanvas" data-uk-offcanvas><i class="uk-icon-bars"></i> {% trans "Menu" %}</a></li>
-    </ul>
-  </nav>
-
-  <div id="main-offcanvas" class="uk-offcanvas">
-    <div class="uk-offcanvas-bar uk-contrast">
-      <h3 class="uk-text-center uk-margin-top uk-margin-bottom-remove">{% trans "Free Entries" %}</h3>
-      <ul class="uk-nav uk-nav-offcanvas uk-margin-top" data-uk-nav>
-        <li><a href="{% url 'home' %}"><i class="uk-icon-home"></i> {% trans "Home" %}</a></li>
-
+      <ul class="uk-navbar-nav">
         {% if user.is_authenticated %}
-        <li><a href="{% url 'create_entry' %}"><i class="uk-icon-file-text"></i> {% trans "New entry" %}</a></li>
-        <li><a href="{% url 'logout' %}"><i class="uk-icon-sign-out"></i> {% trans "Logout" %}</a></li>
-        {% else %}
-        <li><a href="{% url 'login' %}"><i class="uk-icon-sign-in"></i> {% trans "Login" %}</a></li>
+        <li><a href="{% url 'create_entry' %}">{% trans "New entry" %}</a></li>
         {% endif %}
       </ul>
     </div>
 
-  </div>
+    <div class="uk-navbar-center">
+      <div class="uk-navbar-item">
+        <form action="javascript:void(0)">
+          <input class="uk-input" type="text" placeholder="Input">
+          <button class="uk-button uk-button-primary">{% trans "Search" %}</button>
+        </form>
+      </div>
+    </div>
 
-  <div class="uk-width-small-5-6 uk-width-medium-1-2 uk-width-large-1-2 uk-container-center">
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav">
+      {% if user.is_authenticated %}
+        <li><a href="">{% trans "Logout" %}</a></li>
+      {% else %}
+        <li><a href="{% url "social:begin" "authsch" %}">{% trans "Login" %}</a></li>
+      {% endif %}
+      </ul>
+    </div>
+
+  </nav>
+
+  <div class="uk-container uk-width-5-6@s uk-width-4-5@s uk-width-4-5@l">
 
     {% block content %}
     {% endblock %}
 
-    <hr>
-    <div>
-      <p><i class="uk-icon-copyright"></i> 2016 KSZK DevTeam</p>
-    </div>
   </div>
 
+  <div class="uk-section uk-margin uk-section-secondary uk-light">
+    <p class="uk-align-center"> 2016 KSZK DevTeam</p>
+  </div>
 
-  <script src="{% static 'uikit/js/uikit.min.js' %}"></script>
+  <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'uikit/dist/js/uikit.min.js' %}"></script>
+  <script src="{% static 'uikit/dist/js/uikit-icons.min.js' %}"></script>
   {% block script %}
   {% endblock %}
 </body>

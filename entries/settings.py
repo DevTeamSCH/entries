@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9k+#vz^lx&8u(y$08jbebyk1f(4d_7o5=xhcy5nw7n%@*+!yx+'
+SECRET_KEY = os.environ.get('ENTRIES_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
+    'authsch',
     'rosetta',
     'web',
 ]
@@ -67,7 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.i18n',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -105,6 +107,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+AUTHENTICATION_BACKENDS = [
+    'authsch.authentication.AuthSCHOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_AUTHSCH_KEY = os.environ.get('ENTRIES_SCHAUTH_CLIENT_ID')
+SOCIAL_AUTH_AUTHSCH_SECRET = os.environ.get('ENTRIES_SCHAUTH_SECRET')
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -132,7 +145,7 @@ LOGIN_URL = '/login/'
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'bower_components'),
+    os.path.join(BASE_DIR, 'node_modules'),
     os.path.join(BASE_DIR, 'static')
 ]
 

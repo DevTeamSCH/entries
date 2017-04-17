@@ -1,22 +1,20 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}
-{% trans "Free Entries" %}
-{% endblock %}
-
 {% block content %}
 
-<div class="uk-width-1-3 uk-align-center uk-button-group uk-margin-bottom" data-uk-button-radio>
-  {% if indorm %}
-    <a href="{% url 'home' %}" class="uk-button">{% trans "All" %}</a>
-    <a href="{% url 'indorm' %}" class="uk-active uk-button">{% trans "In Dormitory" %}</a>
-  {% else %}
-    <a href="{% url 'home' %}" class="uk-active uk-button">{% trans "All" %}</a>
-    <a href="{% url 'indorm' %}" class="uk-button">{% trans "In Dormitory" %}</a>
-  {% endif %}
-</div>
-
+<div class="uk-container">
+  <div class="uk-align-center uk-width-1-2">
+    <div class="uk-button-group">
+      {% if indorm %}
+        <a href="{% url 'home' %}" class="uk-button uk-active uk-button-secondary">{% trans "All" %}</a>
+        <a href="{% url 'indorm' %}" class="uk-button uk-button-secondary">{% trans "In Dormitory" %}</a>
+      {% else %}
+        <a href="{% url 'home' %}" class="uk-button uk-button-secondary">{% trans "All" %}</a>
+        <a href="{% url 'indorm' %}" class="uk-button uk-active uk-button-secondary">{% trans "In Dormitory" %}</a>
+      {% endif %}
+    </div>
+  </div>
 {% for entry in entries %}
   {% if entry.approved %}
     {% include "entry.html" with entry=entry  %}
@@ -24,5 +22,28 @@
   {% empty %}
   {% trans "No entries." %}
 {% endfor %}
+</div>
+
+<ul class="uk-pagination uk-flex-center" uk-margin>
+    {% if entries.has_previous %}
+    <li><a href="?page={{ entries.previous_page_number }}"><span uk-pagination-previous></span></a></li>
+    {% else %}
+    <li class="uk-disabled"><span uk-pagination-previous></span></li>
+    {% endif %}
+
+    {% for page_number in page_numbers%}
+      {% if page_number == entries.number %}
+      <li class="uk-active"><span>{{ entries.number }}</span></li>
+      {% else %}
+      <li><a href="?page={{ page_number }}">{{ page_number }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if entries.has_next %}
+    <li><a href="?page={{ entries.next_page_number }}"><span uk-pagination-next></span></a></li>
+    {% else %}
+    <li class="uk-disabled"><span uk-pagination-next></span></li>
+    {% endif %}
+</ul>
 
 {% endblock %}

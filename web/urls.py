@@ -1,13 +1,10 @@
 # -*- encoding: utf-8 -*-
 
 from django.conf.urls import url
-from .views import (
-    EntriesTemplateView, EntryCreateView, InDormitoryTemplateView
-)
+from . import views
 
-
-url_patterns = [
-    url(r'^$', EntriesTemplateView.as_view(), name='home'),
-    url(r'^indorm', InDormitoryTemplateView.as_view(), name='indorm'),
-    url(r'^create/$', EntryCreateView.as_view(), name='create_entry'),
+urlpatterns = [
+    url(r'^$', views.EntriesTemplateView.as_view(), name='home'),
+    url(r'^indorm$', views.InDormitoryTemplateView.as_view(), name='indorm'),
+    url(r'^create/$', views.EntryCreateView.as_view(), name='create_entry'),
 ]

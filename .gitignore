@@ -64,4 +64,9 @@ target/
 
 db.sqlite3
 *.jpg
+*.png
+*.gif
 .idea/
+.env
+
+node_modules/
