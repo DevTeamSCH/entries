@@ -5,8 +5,14 @@ from django.views.generic.base import ContextMixin
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 from .models import Entry
 
+
+def logout_view(request):
+    logout(request)
+    return redirect("home")
 
 class SearchMixin(ContextMixin):
     def get_context_data(self, **kwargs):

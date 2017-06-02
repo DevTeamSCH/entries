@@ -36,7 +36,7 @@
     <div class="uk-navbar-right">
       <ul class="uk-navbar-nav">
       {% if user.is_authenticated %}
-        <li><a href="">{% trans "Logout" %}</a></li>
+        <li><a href="{% url "logout" %}">{% trans "Logout" %}</a></li>
       {% else %}
         <li><a href="{% url "social:begin" "authsch" %}">{% trans "Login" %}</a></li>
       {% endif %}
