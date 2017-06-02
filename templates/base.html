@@ -26,9 +26,9 @@
 
     <div class="uk-navbar-center">
       <div class="uk-navbar-item">
-        <form action="javascript:void(0)">
-          <input class="uk-input" type="text" placeholder="Input">
-          <button class="uk-button uk-button-primary">{% trans "Search" %}</button>
+        <form action="" method="GET">
+          <input class="uk-input" type="text" name="s">
+          <button class="uk-button uk-button-primary" type="submit">{% trans "Search" %}</button>
         </form>
       </div>
     </div>
@@ -52,9 +52,9 @@
 
   </div>
 
-  <div class="uk-section uk-margin uk-section-secondary uk-light">
-    <p class="uk-align-center"> 2016 KSZK DevTeam</p>
-  </div>
+  <footer class="uk-section uk-margin-top uk-section-secondary uk-light">
+    <div class="uk-container">© Copyright KSZK DevTeam</div>
+  </footer>
 
   <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
   <script src="{% static 'uikit/dist/js/uikit.min.js' %}"></script>

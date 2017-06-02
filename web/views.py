@@ -11,7 +11,11 @@ from .models import Entry
 class SearchMixin(ContextMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['entries'] = Entry.objects.all()
+        search = self.request.GET.get('s')
+        if search is not None:
+            context['entries'] = Entry.objects.filter(title__contains=search)
+        else:
+            context['entries'] = Entry.objects.all()
         return context
 
 
@@ -33,7 +37,7 @@ class EntriesPaginationMixin(ContextMixin):
         return context
 
 
-class EntriesTemplateView(EntriesPaginationMixin, TemplateView):
+class EntriesTemplateView(SearchMixin, EntriesPaginationMixin, TemplateView):
     template_name = 'entries.html'
 
     def get_context_data(self, **kwargs):
@@ -44,7 +48,7 @@ class EntriesTemplateView(EntriesPaginationMixin, TemplateView):
         return context
 
 
-class InDormitoryTemplateView(EntriesPaginationMixin, TemplateView):
+class InDormitoryTemplateView(SearchMixin, EntriesPaginationMixin, TemplateView):
     template_name = 'entries.html'
 
     def get_context_data(self, **kwargs):
