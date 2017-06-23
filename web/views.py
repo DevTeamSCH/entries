@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.base import ContextMixin
+from django.views.generic.list import ContextMixin
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
@@ -19,9 +19,7 @@ class SearchMixin(ContextMixin):
         context = super().get_context_data(**kwargs)
         search = self.request.GET.get('s')
         if search is not None:
-            context['entries'] = Entry.objects.filter(title__contains=search)
-        else:
-            context['entries'] = Entry.objects.all()
+            self.entries = self.entries.filter(title__contains=search)
         return context
 
 
@@ -43,7 +41,7 @@ class EntriesPaginationMixin(ContextMixin):
         return context
 
 
-class EntriesTemplateView(SearchMixin, EntriesPaginationMixin, TemplateView):
+class EntriesTemplateView(EntriesPaginationMixin, SearchMixin, TemplateView):
     template_name = 'entries.html'
 
     def get_context_data(self, **kwargs):
@@ -54,7 +52,7 @@ class EntriesTemplateView(SearchMixin, EntriesPaginationMixin, TemplateView):
         return context
 
 
-class InDormitoryTemplateView(SearchMixin, EntriesPaginationMixin, TemplateView):
+class InDormitoryTemplateView(EntriesPaginationMixin, SearchMixin, TemplateView):
     template_name = 'entries.html'
 
     def get_context_data(self, **kwargs):
